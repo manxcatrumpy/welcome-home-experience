@@ -5,6 +5,7 @@ import { componentTagger } from "lovable-tagger";
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
+  base: process.env.GITHUB_PAGES === 'true' ? '/welcome-home-experience/' : '/',
   server: {
     host: "::",
     port: 8080,
@@ -26,6 +27,15 @@ export default defineConfig(({ mode }) => ({
       loader: {
         '.js': 'jsx',
         '.ts': 'tsx',
+      },
+    },
+  },
+  build: {
+    outDir: 'dist',
+    assetsDir: 'assets',
+    rollupOptions: {
+      output: {
+        manualChunks: undefined,
       },
     },
   },
