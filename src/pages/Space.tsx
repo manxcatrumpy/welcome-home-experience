@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
+import Navigation from '@/components/Navigation';
 import heroImage from '@/assets/hero-morning.jpg';
 
 const Space = () => {
@@ -9,6 +10,11 @@ const Space = () => {
 
   return (
     <>
+      {/* Navigation Bar - Sticky */}
+      <div className="sticky top-0 z-40">
+        <Navigation />
+      </div>
+
       <AnimatePresence>
         {selectedSpace && (
           <motion.div
@@ -46,7 +52,7 @@ const Space = () => {
         )}
       </AnimatePresence>
       {/* Hero */}
-      <section className="pt-32 pb-20 md:pt-40 md:pb-32 px-6 md:px-12 lg:px-20 bg-background">
+      <section className="pt-20 pb-20 md:pt-32 md:pb-32 px-6 md:px-12 lg:px-20 bg-background">
         <div className="max-w-4xl mx-auto text-center">
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
