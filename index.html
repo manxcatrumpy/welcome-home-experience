@@ -18,6 +18,17 @@
     <meta name="twitter:title" content="悦納 | 純淨蔬食・生活美學" />
     <meta name="twitter:description" content="滋養會生活的生命，實踐有生命的生活。歡迎你回家。" />
     <meta name="twitter:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
+
+    <!-- GitHub Pages SPA redirect handler -->
+    <script>
+      (function() {
+        var redirect = sessionStorage.redirect;
+        delete sessionStorage.redirect;
+        if (redirect && redirect !== location.pathname) {
+          history.replaceState(null, null, redirect);
+        }
+      })();
+    </script>
   </head>
 
   <body>
