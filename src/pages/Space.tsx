@@ -1,11 +1,50 @@
-import { motion } from 'framer-motion';
+import { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
 import heroImage from '@/assets/hero-morning.jpg';
 
 const Space = () => {
+  const [selectedSpace, setSelectedSpace] = useState<string | null>(null);
+
   return (
     <>
+      <AnimatePresence>
+        {selectedSpace && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setSelectedSpace(null)}
+            className="fixed inset-0 z-50 bg-black/80 flex items-center justify-center p-6 cursor-zoom-out"
+          >
+            <motion.div
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.9, opacity: 0 }}
+              className="relative max-w-4xl w-full bg-background rounded-sm overflow-hidden"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <div className="aspect-[16/9] bg-sand">
+                {/* Placeholder for larger image */}
+                <div className="w-full h-full flex items-center justify-center text-muted-foreground">
+                  {selectedSpace} - 大圖預覽
+                </div>
+              </div>
+              <div className="p-6 text-center">
+                <h3 className="font-serif text-2xl mb-2">{selectedSpace}</h3>
+                <p className="font-sans text-muted-foreground">感受空間的每一個角落，都是為了款待你的到來。</p>
+              </div>
+              <button
+                onClick={() => setSelectedSpace(null)}
+                className="absolute top-4 right-4 text-foreground/50 hover:text-foreground p-2"
+              >
+                ✕
+              </button>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
       {/* Hero */}
       <section className="pt-32 pb-20 md:pt-40 md:pb-32 px-6 md:px-12 lg:px-20 bg-background">
         <div className="max-w-4xl mx-auto text-center">
@@ -92,9 +131,12 @@ const Space = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="group"
+                className="group cursor-zoom-in"
+                onClick={() => setSelectedSpace(name)}
               >
-                <div className="image-container aspect-[4/3] rounded-sm overflow-hidden bg-sand mb-4" />
+                <div className="image-container aspect-[4/3] rounded-sm overflow-hidden bg-sand mb-4 relative">
+                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300" />
+                </div>
                 <p className="font-serif text-lg text-center">{name}</p>
               </motion.div>
             ))}

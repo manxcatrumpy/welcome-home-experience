@@ -91,7 +91,17 @@ const Shop = () => {
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 className="group cursor-pointer"
               >
-                <div className="image-container aspect-square rounded-sm overflow-hidden bg-sand mb-6 hover-lift" />
+                <div className="image-container aspect-square rounded-sm overflow-hidden bg-sand mb-6 relative">
+                  {/* Hover Overlay */}
+                  <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                    <Link
+                      to="/access"
+                      className="px-6 py-3 bg-white/90 text-foreground font-serif tracking-widest text-sm hover:bg-white transition-colors transform translate-y-4 group-hover:translate-y-0 duration-300"
+                    >
+                      詳細資訊
+                    </Link>
+                  </div>
+                </div>
                 <span className="font-sans text-xs text-muted-foreground tracking-widest uppercase">
                   {product.category}
                 </span>
