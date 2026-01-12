@@ -1,18 +1,25 @@
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { ArrowRight } from 'lucide-react';
 
 const Life = () => {
   return (
     <>
       {/* Hero */}
-      <section className="pt-32 pb-20 md:pt-40 md:pb-32 px-6 md:px-12 lg:px-20 bg-background">
-        <div className="max-w-4xl mx-auto text-center">
-          <motion.h1
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
+      <section className="pt-32 pb-16 md:pt-40 md:pb-24 px-6 md:px-12 lg:px-24 bg-background">
+        <div className="content-narrow text-center">
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
             transition={{ duration: 0.8 }}
-            className="font-serif text-display mb-8"
+            className="text-caption mb-6"
+          >
+            LIFE
+          </motion.p>
+          <motion.h1
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.1 }}
+            className="text-display mb-10"
           >
             生活美學
           </motion.h1>
@@ -20,9 +27,9 @@ const Life = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="font-sans text-body-large text-muted-foreground leading-loose"
+            className="text-body-large text-muted-foreground leading-loose"
           >
-            每一次相聚，都是生活美好的提案<br />
+            每一次相聚，都是生活美好的提案<br className="hidden md:block" />
             在這裡，我們交換智慧，共寫生命的律動
           </motion.p>
         </div>
@@ -30,22 +37,22 @@ const Life = () => {
 
       {/* Philosophy */}
       <section className="section-padding bg-secondary">
-        <div className="max-w-3xl mx-auto text-center">
+        <div className="content-narrow text-center">
           <motion.p
-            initial={{ opacity: 0, y: 40 }}
+            initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="font-sans text-body-large text-muted-foreground leading-loose"
+            className="text-body-large text-muted-foreground leading-loose mb-8"
           >
             悦納不只是餐廳，更是個「策展日常」的場域。
           </motion.p>
           <motion.p
-            initial={{ opacity: 0, y: 40 }}
+            initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="font-sans text-muted-foreground leading-loose mt-6"
+            transition={{ duration: 0.8, delay: 0.1 }}
+            className="text-body text-muted-foreground leading-loose"
           >
             我們相信，生活需要不斷地被啟發與滋養。透過茶席、故事會，我們邀請每一位會生活的生命，在此交會。從沙龍到心靈的跨界思維，這些活動紀錄不僅是回憶，更是我們共同學習、一起長出有生命的生活的軌跡。
           </motion.p>
@@ -55,17 +62,18 @@ const Life = () => {
       {/* Events Grid */}
       <section className="section-padding bg-background">
         <div className="content-max-width">
-          <motion.h2
-            initial={{ opacity: 0, y: 30 }}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="font-serif text-heading text-center mb-16"
+            className="text-center mb-16"
           >
-            活動紀錄
-          </motion.h2>
+            <p className="text-caption mb-4">EVENTS</p>
+            <h2 className="text-heading">活動紀錄</h2>
+          </motion.div>
 
-          {/* Scrapbook-style Grid */}
+          {/* Masonry-style Grid */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
             {[1, 2, 3, 4, 5, 6].map((i) => (
               <motion.div
@@ -76,7 +84,7 @@ const Life = () => {
                 transition={{ duration: 0.5, delay: i * 0.08 }}
                 className={`${i === 1 || i === 4 ? 'col-span-2 row-span-2' : ''}`}
               >
-                <div className={`image-container rounded-sm overflow-hidden bg-sand ${i === 1 || i === 4 ? 'aspect-square' : 'aspect-[4/3]'}`} />
+                <div className={`image-container bg-muted ${i === 1 || i === 4 ? 'aspect-square' : 'aspect-[4/3]'}`} />
               </motion.div>
             ))}
           </div>
@@ -84,14 +92,14 @@ const Life = () => {
       </section>
 
       {/* Quote */}
-      <section className="section-padding bg-cream">
-        <div className="max-w-2xl mx-auto text-center">
+      <section className="section-padding bg-secondary">
+        <div className="content-narrow text-center">
           <motion.blockquote
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="font-serif text-2xl md:text-3xl leading-relaxed text-foreground"
+            className="text-xl md:text-2xl leading-relaxed font-light text-foreground"
           >
             「生活的藝術，在於覺察每一個微小的美好。」
           </motion.blockquote>
@@ -100,7 +108,7 @@ const Life = () => {
 
       {/* CTA */}
       <section className="section-padding bg-background">
-        <div className="content-max-width text-center">
+        <div className="content-narrow text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -109,10 +117,10 @@ const Life = () => {
           >
             <Link
               to="/shop"
-              className="group inline-flex items-center gap-3 text-foreground"
+              className="link-minimal"
             >
-              <span className="font-serif text-xl tracking-widest">探索好物選購</span>
-              <ArrowRight size={20} className="transition-transform duration-300 group-hover:translate-x-2" />
+              <span>探索好物選購</span>
+              <span className="text-xs">→</span>
             </Link>
           </motion.div>
         </div>
