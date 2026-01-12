@@ -34,7 +34,9 @@ const Navigation = () => {
     <>
       <header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-          isScrolled ? 'bg-background/95 backdrop-blur-sm shadow-sm' : 'bg-transparent'
+          isScrolled
+            ? 'bg-background/95 backdrop-blur-md shadow-md'
+            : 'bg-background/80 backdrop-blur-md shadow-sm'
         }`}
       >
         <nav className="flex items-center justify-between px-6 md:px-12 lg:px-20 py-4 md:py-6">
