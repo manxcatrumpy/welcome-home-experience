@@ -2,6 +2,7 @@ import { useState, useRef, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Volume2, VolumeX } from 'lucide-react';
+import Navigation from '@/components/Navigation';
 import heroImage from '@/assets/hero-morning.jpg';
 import diningImage from '@/assets/dining-soup.jpg';
 import handsImage from '@/assets/hands-vegetables.jpg';
@@ -49,7 +50,7 @@ const Index = () => {
   return (
     <>
       {/* Audio Player */}
-      <div className="fixed top-24 right-8 z-50">
+      <div className="fixed top-8 right-8 z-50">
         <AudioPlayer />
       </div>
 
@@ -106,6 +107,11 @@ const Index = () => {
           <div className="w-px h-12 bg-gradient-to-b from-muted-foreground to-transparent" />
         </motion.div>
       </section>
+
+      {/* Navigation Bar - Sticky */}
+      <div className="sticky top-0 z-40">
+        <Navigation />
+      </div>
 
       {/* Concept Preview */}
       <section className="section-padding bg-background">
