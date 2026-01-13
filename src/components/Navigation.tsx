@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
+import logo from '@/assets/logo.png';
 
 const navItems = [
   { path: '/', label: '首頁', en: 'HOME' },
@@ -26,7 +27,12 @@ const Navigation = () => {
       <header className="relative z-10 bg-background border-b border-border">
         <nav className="flex items-center justify-between px-6 md:px-12 lg:px-20 py-4 md:py-6">
           {/* Logo */}
-          <Link to="/" className="relative z-10">
+          <Link to="/" className="relative z-10 flex items-center gap-3">
+            <img
+              src={logo}
+              alt="悦納"
+              className="h-10 md:h-12 w-auto"
+            />
             <h1 className="font-serif text-2xl md:text-3xl tracking-widest text-foreground">
               悦納
             </h1>
