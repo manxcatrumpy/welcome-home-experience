@@ -1,59 +1,14 @@
-import { useState, useRef, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Volume2, VolumeX } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import Navigation from '@/components/Navigation';
 import heroImage from '@/assets/hero-morning.jpg';
 import diningImage from '@/assets/dining-soup.jpg';
 import handsImage from '@/assets/hands-vegetables.jpg';
 
-const AudioPlayer = () => {
-  const [isPlaying, setIsPlaying] = useState(false);
-  const audioRef = useRef<HTMLAudioElement | null>(null);
-
-  useEffect(() => {
-    // Initialize audio
-    audioRef.current = new Audio('/assets/ambient-sound.mp3');
-    audioRef.current.loop = true;
-
-    return () => {
-      if (audioRef.current) {
-        audioRef.current.pause();
-        audioRef.current = null;
-      }
-    };
-  }, []);
-
-  const togglePlay = () => {
-    if (audioRef.current) {
-      if (isPlaying) {
-        audioRef.current.pause();
-      } else {
-        audioRef.current.play().catch(e => console.log("Audio play failed:", e));
-      }
-      setIsPlaying(!isPlaying);
-    }
-  };
-
-  return (
-    <button
-      onClick={togglePlay}
-      className="p-3 bg-white/20 hover:bg-white/40 backdrop-blur-sm rounded-full text-foreground transition-all duration-300"
-      aria-label={isPlaying ? "Mute ambient sound" : "Play ambient sound"}
-    >
-      {isPlaying ? <Volume2 size={20} /> : <VolumeX size={20} />}
-    </button>
-  );
-};
-
 const Index = () => {
   return (
     <>
-      {/* Audio Player */}
-      <div className="fixed top-8 right-8 z-50">
-        <AudioPlayer />
-      </div>
-
       {/* Hero Section - Full Screen Immersive */}
       <section className="relative h-screen w-full overflow-hidden">
         {/* Background Image/Video with Slow Zoom */}
