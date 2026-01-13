@@ -148,6 +148,26 @@ const Dining = () => {
           </motion.div>
         </div>
       </section>
+
+      {/* Next Page CTA */}
+      <section className="section-padding bg-secondary">
+        <div className="content-max-width text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+          >
+            <Link
+              to="/space"
+              className="group inline-flex items-center gap-3 text-foreground"
+            >
+              <span className="font-serif text-xl tracking-widest">探索空間日常</span>
+              <ArrowRight size={20} className="transition-transform duration-300 group-hover:translate-x-2" />
+            </Link>
+          </motion.div>
+        </div>
+      </section>
     </>
   );
 };
