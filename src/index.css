@@ -121,11 +121,17 @@
 
   html {
     scroll-behavior: smooth;
+    /* Fix for mobile browser viewport height issues */
+    height: 100%;
   }
 
   body {
     @apply bg-background text-foreground antialiased;
     font-family: 'Noto Sans TC', sans-serif;
+    /* Prevent layout shift on mobile browsers */
+    min-height: 100vh;
+    /* Support for iOS Safari */
+    min-height: -webkit-fill-available;
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -190,6 +196,19 @@
 }
 
 @layer utilities {
+  /* Fix for mobile viewport height - prevents jittering */
+  .h-screen-fixed {
+    height: 100vh; /* Fallback for browsers that don't support Custom Properties */
+    height: 100dvh; /* Dynamic viewport height - best for modern browsers */
+  }
+
+  @supports (-webkit-touch-callout: none) {
+    /* iOS Safari specific fix */
+    .h-screen-fixed {
+      height: -webkit-fill-available;
+    }
+  }
+
   /* 自定義間距 */
   .section-padding {
     @apply py-20 md:py-32 px-6 md:px-12 lg:px-20;

@@ -10,7 +10,7 @@ const Index = () => {
   return (
     <>
       {/* Hero Section - Full Screen Immersive */}
-      <section className="relative h-screen w-full overflow-hidden">
+      <section className="relative h-screen-fixed w-full overflow-hidden">
         {/* Background Image/Video with Slow Zoom */}
         <div className="absolute inset-0">
           <video
