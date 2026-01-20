@@ -198,14 +198,17 @@
 @layer utilities {
   /* Fix for mobile viewport height - prevents jittering */
   .h-screen-fixed {
-    height: 100vh; /* Fallback for browsers that don't support Custom Properties */
-    height: 100dvh; /* Dynamic viewport height - best for modern browsers */
+    /* Use static vh instead of dynamic viewport to prevent layout shift */
+    height: 100vh;
+    /* Prevent height recalculation when browser UI shows/hides */
+    min-height: 100vh;
   }
 
   @supports (-webkit-touch-callout: none) {
     /* iOS Safari specific fix */
     .h-screen-fixed {
       height: -webkit-fill-available;
+      min-height: -webkit-fill-available;
     }
   }
 
